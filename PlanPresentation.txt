@@ -1,15 +1,20 @@
 Introduction
 Présentation de Google Cloud Function
    À quoi ça sert ?
-   Avantages stratégiques
+   Avantages stratégiques, quand l'utiliser
+      vs PaaS
+   Alternative existantes ou pas ? Solution faite maison
    Prix
-   Fonctionnement
+      Par quoi c'est calculé (par quoi)
+      A long terme, beaucoup de photos,, implication de la croissance des cout
+   Fonctionnement technique
 Demo
    Images -> utilise d'autres fonctionnalités Google Cloud (Storage et Vision API)
       -> expliquer le concept de base de la fonction
       -> montrer exemple
       -> fonctionnement du code
       -> expliquer concept de trigger
+      -> comment on aurait fait sans function
    Alternativement : petits exemples (Http + Trigger Storage)
       -> expliquer le concept de base de la fonction (deux fonctions possiblement)
       -> démonstration http
