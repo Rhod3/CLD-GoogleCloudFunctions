@@ -1,20 +1,35 @@
 {
-  "name": "cld-googlecloudfunctions",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "name": "nodejs-docs-samples-functions-imagemagick",
+  "version": "0.0.1",
+  "private": true,
+  "license": "Apache-2.0",
+  "author": "Google Inc.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Rhod3/CLD-GoogleCloudFunctions.git"
+    "url": "https://github.com/GoogleCloudPlatform/nodejs-docs-samples.git"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Rhod3/CLD-GoogleCloudFunctions/issues"
+  "engines": {
+    "node": ">=4.3.2"
   },
-  "homepage": "https://github.com/Rhod3/CLD-GoogleCloudFunctions#readme",
-  "dependencies": {}
+  "scripts": {
+    "lint": "repo-tools lint",
+    "pretest": "npm run lint",
+    "test": "ava -T 20s --verbose test/*.test.js"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "1.6.0",
+    "@google-cloud/vision": "0.16.0",
+    "eslint": "^4.19.1"
+  },
+  "devDependencies": {
+    "@google-cloud/nodejs-repo-tools": "2.2.1",
+    "ava": "0.25.0",
+    "eslint-config-google": "^0.9.1",
+    "proxyquire": "2.0.0",
+    "sinon": "4.4.2"
+  },
+  "cloud-repo-tools": {
+    "requiresKeyFile": true,
+    "requiresProjectId": true
+  }
 }
