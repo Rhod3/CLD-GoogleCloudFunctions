@@ -1,0 +1,83 @@
+\documentclass[a4paper, 11pt]{book}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+\usepackage[legalpaper, margin=2cm]{geometry}
+
+% Français
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{booktabs}
+\usepackage{titlesec}
+
+% Font & Encoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{float} 
+\usepackage{hyperref}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{0pt}{3pt}
+\titlespacing*{\section}{0pt}{5pt}{5pt}
+
+\chapter*{Google Cloud Functions}
+\emph{Rémi Jacquemard, Aurélie Lévy, Miguel Pombo Dias, Nicolas Rod}
+\section*{Description}
+Google Cloud Functions est un environnement d'exécution \textit{serverless} pour construire et connecter des services cloud. Il permet de déployer des fonctions simples à but unique qui peuvent être déclenchées par des événements provenant d'autres services cloud, ou simplement accessible via une requête HTTP.
+
+La gestion de ces fonctions est totalement \textit{serverless}: l'utilisateur n'a pas à gérer de serveur, il s'occupe juste de déployer son code. Cloud Functions se chargera automatiquement de \textit{scale} les ressources alloués aux fonctions d'après leur charge.
+
+\section*{Avantages et désavantages}
+Cloud Functions fournit un endpoint HTTP pour faire appel à ces fonctions. Il est également possible d'utiliser ces fonctions dans d'autres contextes, via des webhooks (Github, Slack, Stripe) ou via des triggers (Google Cloud Storage). Il est également possible de faire un backend de fonctions pour Firebase (application mobile par Google) via des événements provenant de la platforme (Firebase Analytics, Realtime Database, Authentication et Storage).
+
+Par contre, les fonctions sont limitées en ressources, mémoire et temps d'exécution (540 secondes par appel) et elles doivent être stateless. De plus, l'usage des triggers force l'utilisation des services Google. Pour l'instant, Cloud Functions supporte uniquement des fonctions écrites en Javascript.
+
+\section*{Fonctionnement technique}
+Une fois l'API Google Cloud Functions activée et le Cloud SDK installé sur votre machine locale, vous devez créer un projet NodeJS ou utiliser les fichiers \textit{package.json} et \textit{index.js} d'exemple. Une fois écrite, il vous suffit de déployer la fonction via la commande \textbf{gcloud beta functions deploy helloGET --trigger-http} qui vous permettra de faire plusieurs choix (type de déclencheur, mémoire allouée, etc). La fonction peut être ensuite testée en local à l'aide de \textit{Cloud Functions Local Emulator} (\url{ https://cloud.google.com/functions/docs/emulator}).
+% to comment sections out, use the command \ifx and \fi. Use this technique when writing your pre lab. For example, to comment something out I would do:
+%  \ifx
+%	\begin{itemize}
+%		\item item1
+%		\item item2
+%	\end{itemize}	
+%  \fi
+
+\section*{Prix}
+Les coûts mensuels à l'utilisation de \textit{Google Cloud Functions} sont:
+\begin{itemize}
+	\item \$0.40 par millions d'invocations (< 2 millions par mois: gratuit)
+    \item \$0.12 par Go de trafic sortant (< 5G par mois: gratuit, trafic entrant: gratuit)
+    \item \$0.0000025 par GB-seconde (< 400000 par mois: gratuit)
+    \item \$0.0000100 par GHz-seconde (< 200000 par mois: gratuit)
+\end{itemize}
+
+% \begin{figure}[H]
+%     \includegraphics[width=150mm]{img/prices.jpg}
+%     \centering
+% \end{figure}
+
+\section*{Comparaison avec PaaS}
+\begin{figure}[H]
+	\includegraphics[width=150mm]{img/PaasVSFaas.PNG}
+    \centering
+\end{figure}
+
+\section*{Alternatives}
+Quelques concurrents à \textit{Google Cloud Functions}: \textit{AWS Lambda}, \textit{Microsoft Azure Functions}, \textit{IBM Cloud Functions}, \textit{Oracle Fn Project}. Plutôt que d'utiliser la technologie \textit{serverless}, une solution faite maison consisterait à devoir créer et utiliser un serveur HTTP, afin de pouvoir écouter les requêtes entrantes ou des \textit{Webhook} (système de \textit{trigger}).
+
+\section*{Documentation}
+\begin{description}
+  \item[Documentation officielle] \url{https://cloud.google.com/functions/docs/}
+  \item[Exemple de fonctions] \url{https://github.com/GoogleCloudPlatform/nodejs-docs-samples/tree/master/functions}
+\end{description}
+
+
+\end{document}
